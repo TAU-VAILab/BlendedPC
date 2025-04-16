@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Blended Point Cloud Diffusion for Localized Text-guided Shape Editing</title>
+<!--    <link rel="icon" href="../pics/wis_logo.jpg">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript">
+    src=hover.js;
+</script>
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button>
+<div class="page-container" >
+  <h1 align="center">Blended Point Cloud Diffusion for Localized Text-guided Shape Editing</h1>
+  <h2 align="center">Supplementary Material</h2>
+
+  <p align="center">&nbsp;</p>
+	<h5 align="left">
+    Click below to view our interactive results, comparisons and ablations:
+  </h5>
+	<a href="#top"></a>
+  <ul>
+	<li><a href="../index.html">Sample Results</a></li>
+	<li><a href="comparisons.html">Comparisons</a></li>
+	<li><a href="ablations.html">Ablations</a></li>
+  </ul>
+
+
+<!------------------ BEGIN SECTION ------------------>
+
+<p>&nbsp;</p>
+  <hr>
+
+  <h2 id="ablations_container" align="left"><a name="image-results" id="image-results"></a>Ablations</h2>
+  <p align="left"> We compare our method to Inpaint-E (i.e. not using our inference-time coordinate blending algorithm) and our method when t<sub>r</sub> is set to T (i.e. coordinate blending is
+	performed <br>
+	at every inference step). As is evident in the results these baselines struggle to convey the text prompt while also preserving identity in the edited part.
+  </p>
+
+  <table class="result-table" width="85%" align="center" margin-top="0%">
+    <tbody>
+            <tr>
+                <th width="2%" >&nbsp;</th>
+                <th width="15%" class="video-label">Input</th>
+                <th width="15%" class="video-label">Masked</th>
+                <th width="15%" class="video-label">Inpaint-E only</th>
+                <th width="15%" class="video-label">Ours t<sub>r</sub> = T</th>
+                <th width="15%" class="video-label">Ours</th>
+            </tr>
+            <!-- <tr> <td> <p>&nbsp;</p> </td> </tr> -->
+            <!-- loop onmouseover="this.play();" onmouseout="this.pause();" -->
+             <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">the target's legs are straight</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_2a3a847a3d4c39c1b17743c18fb63dc\Straight_legs\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_2a3a847a3d4c39c1b17743c18fb63dc\Straight_legs\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_2a3a847a3d4c39c1b17743c18fb63dc\Straight_legs\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_2a3a847a3d4c39c1b17743c18fb63dc\Straight_legs\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_2a3a847a3d4c39c1b17743c18fb63dc\Straight_legs\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+             <tr> <td> <br /> <br /> </td> </tr>
+            <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">the target has a thinner backrest</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_d9bbd1a1eaf6d2259d3ea1c6b57a0095\Thin_backrest\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_d9bbd1a1eaf6d2259d3ea1c6b57a0095\Thin_backrest\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_d9bbd1a1eaf6d2259d3ea1c6b57a0095\Thin_backrest\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_d9bbd1a1eaf6d2259d3ea1c6b57a0095\Thin_backrest\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\chair_ShapeNet_d9bbd1a1eaf6d2259d3ea1c6b57a0095\Thin_backrest\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+            <tr> <td> <br /> <br /> </td> </tr>
+            <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">the base is smaller</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_185e37856f55b2c4e9aa07397ea1cf8d\The_base_is_smaller\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_185e37856f55b2c4e9aa07397ea1cf8d\The_base_is_smaller\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_185e37856f55b2c4e9aa07397ea1cf8d\The_base_is_smaller\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_185e37856f55b2c4e9aa07397ea1cf8d\The_base_is_smaller\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_185e37856f55b2c4e9aa07397ea1cf8d\The_base_is_smaller\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+            <tr> <td> <br /> <br /> </td> </tr>
+            <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">the target's shade is closed</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_cf9987efe529a5c538b27a25d1336579\Closed_shade\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_cf9987efe529a5c538b27a25d1336579\Closed_shade\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_cf9987efe529a5c538b27a25d1336579\Closed_shade\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_cf9987efe529a5c538b27a25d1336579\Closed_shade\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\lamp_ShapeNet_cf9987efe529a5c538b27a25d1336579\Closed_shade\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+            <tr> <td> <br /> <br /> </td> </tr>
+           <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">it has a smaller top</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_b6758a9b899d540919fb4103277a6b93\Smaller_top\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_b6758a9b899d540919fb4103277a6b93\Smaller_top\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_b6758a9b899d540919fb4103277a6b93\Smaller_top\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_b6758a9b899d540919fb4103277a6b93\Smaller_top\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_b6758a9b899d540919fb4103277a6b93\Smaller_top\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+            <tr> <td> <br /> <br /> </td> </tr>
+            <tr>
+                <td align="center">
+                    <div align="center" class="prompt_title" width="120%">target has thick legs</div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_839334dd754c09e5b7ea82317702e856\The_table_has_thick_legs\source\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_839334dd754c09e5b7ea82317702e856\The_table_has_thick_legs\masked\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_839334dd754c09e5b7ea82317702e856\The_table_has_thick_legs\pepsi\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_839334dd754c09e5b7ea82317702e856\The_table_has_thick_legs\pepsi_0\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <video onmouseover="this.play();" onmouseout="this.removeAttribute('controls');this.load()" muted width="110%"  class="result-video">
+                            <source src="..\videos\ablations\table_ShapeNet_839334dd754c09e5b7ea82317702e856\The_table_has_thick_legs\pepsi_45\video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+  <p><br>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</div>
+
+</body></html>

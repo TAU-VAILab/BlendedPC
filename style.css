@@ -1,0 +1,469 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+	width: 100%;
+  }
+
+h1 {
+    font-family: "Noto Sans", Arial;
+    font-size: 52px;
+    color: rgb(255, 169, 31);
+    letter-spacing: -1px;
+    word-spacing: 8px;
+	line-height: 0px;
+	margin-top: 60px;
+    font-weight: bold;
+}
+
+
+h2 {
+    font-family: "Noto Sans", Arial;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h2_r {
+	color: rgb(255, 169, 31);
+}
+
+h5 {
+    font-family: "Noto Sans", Arial;
+    font-size: 22px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: rgb(110, 110, 110);
+}
+
+p {
+    font-family: "Noto Sans", Arial;
+    font-size: 16px;
+}
+
+li {
+    font-family: "Noto Sans", Arial;
+    font-size: 16px;
+}
+
+.prompt_title {
+    font-family: "Indie Flower", Arial;
+    font-size: 1.8vw;
+}
+
+.prompt_title_local {
+    font-family: "Indie Flower", Arial;
+    font-size: 32px;
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_red {
+    font-family: "Indie Flower", Arial;
+    font-size: 30px;
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_red_inpar {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_blue {
+    font-family: "Indie Flower", Arial;
+    font-size: 30px;
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_blue_inpar {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_blue_inter {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_green {
+    font-family: "Indie Flower", Arial;
+    font-size: 30px;
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_red_small {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_blue_small {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_green_small {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_green_inpar {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_black {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_black_small {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.prompt_title_black_inter {
+    font-family: "Indie Flower", Arial;
+    font-size: 22px;
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.video-label {
+    font-family: "Noto Sans", Arial;
+    font-size: 1.8vw;
+}
+
+.video-label-slides {
+    font-family: "Noto Sans", Arial;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.video-label-text {
+    font-family: "Noto Sans", Arial;
+    font-size: 1.4vw;
+    margin-bottom: 20px;
+}
+
+.video-label-text-inpar {
+    font-family: "Noto Sans", Arial;
+    font-size: 1.4vw;
+    margin-bottom: 20px;
+}
+
+.inpar {
+}
+
+.author-block {
+    font-size: 20px;
+}
+
+.author-block a {
+    color: hsl(204, 86%, 53%);
+    text-decoration: none;
+ }
+ 
+ .author-block a1 {
+    color: rgb(0, 0, 0);
+	font-size: 14px;
+    text-decoration: none;
+ }
+
+.conference-block {
+	font-family: "Noto Sans", Arial;
+	margin-bottom: 10px;
+	color: rgb(0, 100, 200);
+    font-size: 23px;
+	font-weight: bold;
+}
+
+.conference-block a {
+    text-decoration: none;
+ }
+ 
+.author-block a:hover {
+    text-decoration: underline;
+}
+
+.affiliations {
+    margin-top: 10px;
+	margin-bottom: 4px;
+}
+
+.publication-links{
+    width: 100%;
+    margin-top: -20px;
+}
+
+.paper-link {
+    color: rgb(0, 0, 0);
+}
+
+.link-block a {
+    text-decoration: none;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+}
+
+.link-block {
+    text-decoration: none;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+}
+
+.button {
+    padding: 16px 14px;
+    background-color: white;
+    border-radius: 24px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(135, 134, 134);
+}
+
+.button:hover {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+.page-container {
+	width: 90%;
+    margin:0 auto;
+}
+
+.swiper {
+    width: 600px;
+    margin-top: 30px;
+}
+
+.swiper-wrapper {
+    height: 75%;
+}
+
+.swiper-slide img {
+    width: 100%;
+}
+
+.swiper-slide video {
+    width: 100%;
+}
+
+.intro-paragraph {
+    width: 100%;
+}
+.intro-paragraph_bold {
+    width: 100%;
+    font-weight: bold;
+}
+.intro-paragraph p {
+    width: 100%;
+    font-size: 20px;
+}
+
+.intro-container {
+    width: 62%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.abstract-container {
+    width: 62%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.abstract-container p {
+    font-size: 18px;
+}
+
+.method-container {
+    width: 62%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.ack-container {
+    width: 62%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.bib-container {
+    width: 62%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.code-container {
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+}
+
+.bib-container code {
+    color: black;
+    font-size: 16px;
+    background-color: rgb(240, 240, 240);
+}
+
+.inline-img {
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+	margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.interactive_bold {
+    font-size: 20px;
+}
+
+.interactiv_vid {
+    margin-bottom: 30px;
+}
+
+.fixed-height-row {
+	min-height: 50%;
+}
+
+@media	(max-width: 600px){
+	.page-container {
+		width: 90%;
+		margin-left: auto; 
+		margin-right: auto;
+	}
+	
+	h1 {
+		font-size: 250%;
+	}
+	
+	.inline-img {
+		width: 10%;
+		height: 10%;
+	}
+	
+	h2 {
+		font-size: 150%;
+	}
+	
+	.swiper {
+		width: 80%;
+	}
+	
+	.author-block {
+		font-size: 100%;
+	}
+ 
+	.author-block a1 {
+		font-size: 50%;
+	}
+	
+	.prompt_title_blue_small {
+		font-size: 50%;
+	}
+
+	.prompt_title_black_small {
+		font-size: 50%;
+	}
+	
+	.intro-container {
+		width: 75%;
+	}
+	
+	.abstract-container {
+		width: 75%;
+	}
+	
+	.method-container {
+		width: 75%;
+	}
+	
+	.ack-container {
+		width: 75%;
+	}
+	
+	.bib-container {
+		width: 75%;
+	}
+
+	.intro-paragraph p {
+		font-size: 90%;
+	}
+	
+	.interactive_bold {
+		font-size: 90%;
+	}
+	
+	p {
+		font-size: 90%;
+	}
+	
+	.abstract-container p {
+		font-size: 90%;
+	}
+	
+	.video-label-text-inpar {
+		font-size: 90%;
+	}
+	
+	.prompt_title_red_inpar {
+		font-size: 90%;
+	}
+	
+	.prompt_title_blue_inpar {
+		font-size: 90%;
+	}
+	
+	.prompt_title_green_inpar {
+		font-size: 90%;
+	}
+	
+	.prompt_title_red {
+		font-size: 110%;
+	}
+	
+	.prompt_title_blue {
+		font-size: 110%;
+	}
+	
+	.prompt_title_green {
+		font-size: 110%;
+	}
+	
+}

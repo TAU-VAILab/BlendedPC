@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="xdvJxvo39Ei0nahgmgXGp9DCslFea8wH789x6mmAY-A" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <meta property="og:site_name" content="BlendedPC" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="BlendedPC: Blended Point Cloud Diffusion for Localized Text-guided Shape Editing" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://tau-vailab.github.io/BlendedPC/" />
+    <meta property="og:image" content="https://tau-vailab.github.io/BlendedPC/webpage_assets/images/teaser.png" />
+
+    <meta property="article:publisher" content="https://tau-vailab.github.io/BlendedPC/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BlendedPC: Blended Point Cloud Diffusion for Localized Text-guided Shape Editing" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://tau-vailab.github.io/BlendedPC/" />
+    <meta name="twitter:image" content="https://tau-vailab.github.io/BlendedPC/webpage_assets/images/teaser.png" />
+
+    <title>BPCDiff</title>
+<!--    <link rel="icon" href="../pics/wis_logo.jpg">-->
+    <link rel="icon" href="./webpage_assets/images/blender.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page-container">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- title -->
+    <h1 class="ourh1" align="center">BlendedPC <img class="inline-img" src=".\webpage_assets\images\blender.png" alt=""></h1>
+    <h2 class="ourh2" align="center"><h2_r>Blended</h2_r> <h2_r>P</h2_r>oint <h2_r>C</h2_r>loud Diffusion for Localized Text-guided Shape Editing</h2>
+	
+    <!-- authors and affiliations -->
+    <section class="authors_block">
+        <div class="authors" align="center">
+            <span class="author-block"><a href="https://etaisella.github.io/" target="_blank">Etai Sella</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/noam-atia" target="_blank">Noam Atia</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="https://rmokady.github.io/" target="_blank">Ron Mokady</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://www.elor.sites.tau.ac.il/" target="_blank">Hadar Averbuch-Elor</a><sup>1,2</sup></span>
+        </div>
+
+		<div class="contrib" align="center">
+            <span class="author-block"><a1><sup>*</sup>Denotes equal contribution </a1></span>
+        </div>
+
+		<div class="affiliations" align="center">
+            <span class="author-block"><sup>1</sup>Tel Aviv University</span>
+            <span class="author-block" style="margin-left: 20px;"><sup>2</sup>Cornell University</span>
+            <span class="author-block" style="margin-left: 20px;"><sup>3</sup>BRIA AI</span>
+        </div>
+    </section>
+
+	<!-- authors and affiliations -->
+    <!-- link buttons -->
+    <div class="column has-text-centered">
+        <div class="publication-links" align="center">
+
+          <!-- arxiv link -->
+          <span class="link-block">
+            <a href="http://arxiv.org/abs/2311.17834" class="paper-link" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </button>
+            </a>
+          </span>
+
+          <!-- Github Link. -->
+          <span class="link-block">
+            <a href="https://github.com/TAU-VAILab/BPCDiff" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                        <i class="fa fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </button>
+            </a>
+          </span>
+
+          <!-- Supp Link. -->
+          <span class="link-block">
+            <a href="supp/index.html" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                        <i class="fa fa-plus-square"></i>
+                    </span>
+                    <span>Supplementary Material</span>
+                  </button>
+            </a>
+          </span>
+        </div>
+    </div>
+
+    <!-- slider -->
+    <!-- Slider main container -->
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+		  <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+                        <th colspan="2" width="90%" class="prompt_title_blue" align="center">Dome-shaped shade</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <video loop autoplay  muted width="95%"  class="result-video">
+                                <source src="webpage_assets/videos/lamp.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
+                            <div align="center" class="video-label-slides">Input</div>
+                        </td>
+                        <td width="41%">
+                            <div align="center" class="video-label-slides">Output&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+                        <th colspan="2" width="90%" class="prompt_title_blue" align="center">The back is rounded</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <video loop autoplay  muted width="95%"  class="result-video">
+                                <source src="webpage_assets/videos/chair.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
+                            <div align="center" class="video-label-slides">Input</div>
+                        </td>
+                        <td width="41%">
+                            <div align="center" class="video-label-slides">Output&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                 <tr>
+                        <th colspan="2" width="90%" class="prompt_title_blue" align="center">The neck is straight</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <video loop autoplay  muted width="95%"  class="result-video">
+                                <source src="webpage_assets/videos/guitar.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
+                            <div align="center" class="video-label-slides">Input</div>
+                        </td>
+                        <td width="41%">
+                            <div align="center" class="video-label-slides">Output&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+                        <th colspan="2" width="90%" class="prompt_title_blue" align="center">The crown is longer</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <video loop autoplay muted width="95%"  class="result-video">
+                                <source src="webpage_assets/videos/cap.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
+                            <div align="center" class="video-label-slides">Input</div>
+                        </td>
+                        <td width="41%">
+                            <div align="center" class="video-label-slides">Output&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+                        <th colspan="2" width="90%" class="prompt_title_blue" align="center">Four legs</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <video loop autoplay  muted width="95%"  class="result-video">
+                                <source src="webpage_assets/videos/table.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
+                            <div align="center" class="video-label-slides">Input</div>
+                        </td>
+                        <td width="41%">
+                            <div align="center" class="video-label-slides">Output&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- abstract -->
+    <section class="abstract-section" width="100%">
+        <div class="abstract-container has-text-justified">
+            <hr>
+            <h2 align="center">Abstract</h2>
+            <p class="has-text-justified">
+                Natural language offers a highly intuitive interface for enabling localized, fine-grained edits of 3D shapes. However, prior works face challenges in preserving global coherence while locally modifying the input 3D shape. We introduce an inpainting-based framework for editing shapes represented as point clouds. Our approach leverages foundation 3D diffusion models for localized shape edits, adding structural Input through partial conditional shapes to preserve global identity. To enhance identity preservation within edited regions, we propose an inference-time coordinate blending algorithm. This algorithm balances reconstruction of the full shape with inpainting over progressive noise levels, enabling seamless blending of original and edited shapes without requiring costly and inaccurate inversion. Extensive experiments demonstrate that our method outperforms existing techniques across multiple metrics, measuring both fidelity to the original shape and adherence to textual prompts.
+            </p>
+    </section>
+
+    <!-- interactive-section -->
+    <section class="interactive-section" width="100%">
+        <div class="abstract-container has-text-justified">
+            <hr>
+            <h2 align="center">Examples of Fine-grained 3D Shape Editing</h2><br></br>
+            <table class="interactive-table" width="80%" align="center">
+                <tr>
+                    <td align="center" >
+                        <button class="prompt_title_black_small" onclick="playVideo('video3', '')" >Chair #1</button>
+                    </td>
+                    <td align="center">
+						<a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</a>
+                        <button class="prompt_title_black_small" onclick="playVideo('video2', '')">Chair #2</button>
+                    </td>
+                    <td align="center">
+                        <button class="prompt_title_black_small" onclick="playVideo('video1', '')">Chair #3</button>
+                    </td>
+                </tr>
+                <tr class="fixed-height-row" id="videoRow">
+                    <td class="interactiv_vid" align="center" colspan="3">
+                        <video id="videoPlayer" loop autoplay muted width="65%" class="result-video">
+                            <source src="./webpage_assets/videos/interactive/video3.mp4" type="video/mp4">
+                        </video>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <button class="prompt_title_blue_small" onclick="switchVideo('_a')">Spindle backrest</button>
+                    </td>
+                    <td align="center">
+						<a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</a>
+                        <button class="prompt_title_blue_small" onclick="switchVideo('_b')">Thinner seat</button>
+                    </td>
+                    <td align="center">
+                        <button class="prompt_title_blue_small" onclick="switchVideo('_c')">Four legs</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- method -->
+    <section class="method-section" width="100%">
+        <div class="method-container">
+            <hr>
+            <h2 align="center">How does it work?</h2>
+		<br>
+            <h5 align="center">Training</h5>
+            <div class="im_container has-text-justified" width="90%" align="center">
+                <img align="center" src="./webpage_assets/images/method_overview_training.png" alt="Overview" width="100%">
+            </div> 
+            <p class="has-text-justified">
+                <br>
+                🗂️ To construct our training dataset, we use <a href="https://github.com/optas/changeit3d">ShapeTalk</a>, a collection of point cloud shape pairs and corresponding text prompts that describe geometric differences between them.
+                From this dataset, we derive a specialized subset called <b>l-ShapeTalk</b> by using a fine-tuned <a href="https://github.com/meta-llama/llama3">LLaMA 3</a> model to extract the specific part mentioned in each prompt.
+                This enables us to retain only samples where the edited part is clearly identified, allowing accurate edit mask generation via a <a href="https://github.com/charlesq34/pointnet">PointNet</a>-based segmentation model.<br></br>
+                🧪 We fine-tune a transformer-based diffusion model equipped with a cross-entity attention mechanism, following the approach of <a href="https://tau-vailab.github.io/Spice-E">Spice&middot;E</a>, on top of the pretrained <a href="https://github.com/openai/point-e">Point&middot;E</a> architecture.<br></br>
+                ✏️ Our model, <b>Inpaint-E</b>, is trained to take a partial point cloud with a masked region and a corresponding text prompt as input, and to generate a completed shape that reflects the requested edit.<br></br>
+                📉 The model is supervised using a denoising objective: it predicts the noise added to the ground truth shape, conditioned on the prompt and the masked input.<br></br>
+                🔁 To encourage identity preservation, we occasionally provide the full point cloud during training with a "COPY" prompt, enabling the model to learn faithful reconstruction in addition to editing.
+            </p>            
+            <br>
+            <h5 align="center">Inference</h5>
+            <div class="im_container has-text-justified" width="90%" align="center">
+                <img align="center" src="./webpage_assets/images/method_overview_inference.png" alt="Overview" width="100%">
+            </div> 
+            <p class="has-text-justified">
+                <br>
+                🎯 During inference, we aim to generate an edited shape that matches the prompt while preserving the original structure.<br></br>
+                🧱 To achieve this, we introduce a <b>coordinate blending</b> technique that combines two types of denoising: inpainting and reconstruction.<br></br>
+                🧩 First, we run the model using the full input shape and the "COPY" prompt to reconstruct the original shape from noise—this helps preserve the unedited regions.<br></br>
+                ✏️ At a specific timestep \( t = t_r \), we switch to editing mode: the model receives the masked shape and the full prompt, generating a modified version of the target part.<br></br>
+                🌀 We then blend the outputs from the two paths—keeping the edited part from inpainting and the rest from reconstruction—ensuring smooth, high-quality edits without affecting the rest of the shape.<br></br>
+                ⚖️ This process avoids using inversion, which is often slow and inaccurate, and leads to better identity preservation across the unedited regions.
+            </p>            
+        <div class="attn-grid-vid-container">
+            
+        </div>
+        </div>
+    </section>
+
+<!--     BibTex-->
+    <section class="bib-section" width="100%">
+        <div class="bib-container">
+            <hr>
+            <h2 align="center">BibTeX</h2>
+            <div class="code-container" align="left">
+                <code>
+			 @inproceedings{sella2024spice, <br>
+   		&emsp;   &emsp;	title={Spice{\textperiodcentered} E: Structural Priors in 3D Diffusion using Cross-Entity Attention}, <br>
+  		&emsp;   &emsp;	author={Sella, Etai and Fiebelman, Gal and Atia, Noam and Averbuch-Elor, Hadar}, <br>
+  		&emsp;   &emsp;	booktitle={ACM SIGGRAPH 2024 Conference Papers}, <br>
+  		&emsp;   &emsp;	pages={1--11}, <br>
+  		&emsp;   &emsp; year={2024} <br>
+		  }
+                </code>
+            </div>
+        </div>
+    </section>
+
+  <p><br>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</div>
+<script>
+const swiper = new Swiper('.swiper', {
+    autoplay: {
+    delay: 4000,
+    },
+    // Optional parameters
+    speed: 1000,
+    loop: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+<script>
+    let currentVideo = "video3";
+    let currentSuffix = "";
+
+    function playVideo(newVideo, newSuffix) {
+        if (currentVideo === newVideo && currentSuffix === newSuffix) return;
+
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        currentTime = videoPlayer.currentTime;
+        videoPlayer.src = `./webpage_assets/videos/interactive/${newVideo}${newSuffix}.mp4`;
+        videoPlayer.addEventListener('loadedmetadata', function () {
+            videoPlayer.currentTime = currentTime;
+            videoPlayer.removeEventListener('loadedmetadata', arguments.callee);
+
+            // After changing the video source, set the fixed height
+            setFixedHeight();
+        });
+        videoPlayer.play();
+        currentVideo = newVideo;
+        currentSuffix = newSuffix;
+    }
+
+    function switchVideo(newSuffix) {
+        if (currentSuffix === newSuffix) return;
+        playVideo(currentVideo, newSuffix);
+    }
+
+    // Function to set a fixed height for the row after changing the video source
+    function setFixedHeight() {
+        const videoRow = document.getElementById('videoRow');
+        videoRow.style.height = `${videoRow.offsetHeight}px`;
+    }
+</script>
+
+</body></html>
