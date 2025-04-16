@@ -30,8 +30,8 @@ We will release our code and trained models.
 ### Clone the Repository
 
 ```bash
-git clone git@github.com:TAU-VAILab/BPCDiff.git
-cd BPCDiff
+git clone git@github.com:TAU-VAILab/BlendedPC.git
+cd BlendedPC
 ```
 
 ### Set Up the Environment
