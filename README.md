@@ -2,13 +2,12 @@
 
 **Etai Sella<sup>1</sup>, Noam Atia<sup>1</sup>, Ron Mokady<sup>1</sup>, Hadar Averbuch-Elor<sup>1,2</sup>**
 
-<sup>1</sup> Tel Aviv University  
-<sup>2</sup> Cornell University  
+<sup>1</sup> Tel Aviv University  <sup>2</sup> Cornell University  
 
 This is the official PyTorch implementation of **BlendedPC**.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2311.17834-b31b1b.svg)](https://arxiv.org/abs/2311.17834)  
-[[Project Website](https://tau-vailab.github.io/Spice-E/)]
+[[Project Website](https://noamatia.github.io/BlendedPC/)]
 
 ## Abstract
 
