@@ -20,7 +20,7 @@ Extensive experiments demonstrate that our method outperforms existing technique
 We will release our code and trained models.
 
 <p align="center">
-<img src="webpage_assets/images/teaser.png">
+<img src="docs/webpage_assets/images/teaser.png">
 </p>
 
 ---
