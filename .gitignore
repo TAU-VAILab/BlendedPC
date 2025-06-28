@@ -3,6 +3,6 @@ __pycache__/
 point_e_model_cache/
 .ipynb_checkpoints/
 .DS_Store
-blending_dir/
+blending_cache/
 *.onnx*
 outputs/

@@ -134,13 +134,13 @@ def karras_sample_progressive(
     s_tmax=float("inf"),
     s_noise=1.0,
     guidance_scale=0.0,
-    blending_dir=None,
+    blending_cache_dir=None,
     blending_indices_list=None,
     transition_timestep=None,
 ):
     sigmas = get_sigmas_karras(steps, sigma_min, sigma_max, rho, device=device)
-    if blending_dir is not None:
-        x_T_path = os.path.join(blending_dir, "x_T.pt")
+    if blending_cache_dir is not None:
+        x_T_path = os.path.join(blending_cache_dir, "x_T.pt")
         if os.path.exists(x_T_path):
             x_T = th.load(x_T_path)
         else:
@@ -157,7 +157,7 @@ def karras_sample_progressive(
                             s_tmin=s_tmin, 
                             s_tmax=s_tmax, 
                             s_noise=s_noise, 
-                            blending_dir=blending_dir, 
+                            blending_cache_dir=blending_cache_dir, 
                             blending_indices_list=blending_indices_list,
                             transition_timestep=transition_timestep)
     else:
@@ -263,7 +263,7 @@ def sample_heun(
     s_tmin=0.0,
     s_tmax=float("inf"),
     s_noise=1.0,
-    blending_dir=None,
+    blending_cache_dir=None,
     blending_indices_list=None,
     transition_timestep=None,
 ):
@@ -279,8 +279,8 @@ def sample_heun(
         gamma = (
             min(s_churn / (len(sigmas) - 1), 2**0.5 - 1) if s_tmin <= sigmas[i] <= s_tmax else 0.0
         )
-        if blending_dir is not None:
-           eps_path = os.path.join(blending_dir, f"eps_{i}.pt")
+        if blending_cache_dir is not None:
+           eps_path = os.path.join(blending_cache_dir, f"eps_{i}.pt")
            if os.path.exists(eps_path):
                eps = th.load(eps_path)
            else:
@@ -305,8 +305,8 @@ def sample_heun(
             d_2 = to_d(x_2, sigmas[i + 1], denoised_2)
             d_prime = (d + d_2) / 2
             x = x + d_prime * dt
-        if blending_dir is not None:
-            x_path = os.path.join(blending_dir, f"x_{i}.pt")
+        if blending_cache_dir is not None:
+            x_path = os.path.join(blending_cache_dir, f"x_{i}.pt")
             if blending_indices_list is None:
                 # Copy
                 th.save(x, x_path)

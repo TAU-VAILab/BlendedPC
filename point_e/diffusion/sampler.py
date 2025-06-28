@@ -100,14 +100,14 @@ class PointCloudSampler:
                      model_kwargs: Dict[str, Any], 
                      guidances: Optional[List[torch.Tensor]] = None, 
                      prev_samples: Optional[torch.Tensor] = None, 
-                     blending_dir: Optional[str] = None, 
+                     blending_cache_dir: Optional[str] = None, 
                      blending_indices_list: Optional[List[int]] = None, 
                      transition_timestep: Optional[int] = None,
                      return_list: bool = False) -> torch.Tensor:
-        os.makedirs(blending_dir, exist_ok=True)
+        os.makedirs(blending_cache_dir, exist_ok=True)
         samples = None
         samples_list = []
-        for x in self.sample_batch_progressive(batch_size, model_kwargs, guidances, prev_samples, blending_dir, blending_indices_list, transition_timestep):
+        for x in self.sample_batch_progressive(batch_size, model_kwargs, guidances, prev_samples, blending_cache_dir, blending_indices_list, transition_timestep):
             if x is None:
                 samples_list.append(samples)
             else:
@@ -119,7 +119,7 @@ class PointCloudSampler:
         model_kwargs: Dict[str, Any], 
         guidances: Optional[List[torch.Tensor]] = None, 
         prev_samples: Optional[torch.Tensor] = None, 
-        blending_dir: Optional[str] = None, 
+        blending_cache_dir: Optional[str] = None, 
         blending_indices_list: Optional[List[int]] = None,
         transition_timestep: Optional[int] = None,
     ) -> Iterator[torch.Tensor]:
@@ -188,7 +188,7 @@ class PointCloudSampler:
                     sigma_max=stage_sigma_max,
                     s_churn=stage_s_churn,
                     guidance_scale=stage_guidance_scale,
-                    blending_dir=blending_dir if type(model) != CLIPImageGridUpsamplePointDiffusionTransformer else None,
+                    blending_cache_dir=blending_cache_dir if type(model) != CLIPImageGridUpsamplePointDiffusionTransformer else None,
                     blending_indices_list=blending_indices_list if type(model) != CLIPImageGridUpsamplePointDiffusionTransformer else None,
                     transition_timestep=transition_timestep if type(model) != CLIPImageGridUpsamplePointDiffusionTransformer else None,
                 )
