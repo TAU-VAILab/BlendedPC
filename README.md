@@ -1,8 +1,8 @@
 # Blended Point Cloud Diffusion for Localized Text-Guided Shape Editing
 
-**Etai Sella<sup>1</sup>, Noam Atia<sup>1</sup>, Ron Mokady<sup>1</sup>, Hadar Averbuch-Elor<sup>1,2</sup>**
+**Etai Sella<sup>1</sup>, Noam Atia<sup>1</sup>, Ron Mokady<sup>2</sup>, Hadar Averbuch-Elor<sup>3</sup>**
 
-<sup>1</sup> Tel Aviv University  <sup>2</sup> Cornell University  
+<sup>1</sup> Tel Aviv University  <sup>2</sup> BRIA AI <sup>3</sup> Cornell University  
 
 This is the official PyTorch implementation of **BlendedPC**.
 
