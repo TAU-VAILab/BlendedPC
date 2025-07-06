@@ -9,6 +9,7 @@ TEXTS = "texts"
 UPSAMPLE = "upsample"
 NUM_POINTS_LOW = 1024
 NUM_POINTS_HIGH = 4096
+NUM_INFERENCE_STEPS = 65
 MODEL_NAME = "base40M-textvec"
 
 
