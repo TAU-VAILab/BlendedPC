@@ -45,8 +45,8 @@
         <div class="authors" align="center">
             <span class="author-block"><a href="https://etaisella.github.io/" target="_blank">Etai Sella</a><sup>1*</sup>,</span>
             <span class="author-block"><a href="https://www.linkedin.com/in/noam-atia" target="_blank">Noam Atia</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="https://rmokady.github.io/" target="_blank">Ron Mokady</a><sup>3</sup>,</span>
-            <span class="author-block"><a href="https://www.elor.sites.tau.ac.il/" target="_blank">Hadar Averbuch-Elor</a><sup>1,2</sup></span>
+            <span class="author-block"><a href="https://rmokady.github.io/" target="_blank">Ron Mokady</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.elor.sites.tau.ac.il/" target="_blank">Hadar Averbuch-Elor</a><sup>3</sup></span>
         </div>
 
 		<div class="contrib" align="center">
@@ -55,8 +55,8 @@
 
 		<div class="affiliations" align="center">
             <span class="author-block"><sup>1</sup>Tel Aviv University</span>
-            <span class="author-block" style="margin-left: 20px;"><sup>2</sup>Cornell University</span>
-            <span class="author-block" style="margin-left: 20px;"><sup>3</sup>BRIA AI</span>
+            <span class="author-block" style="margin-left: 20px;"><sup>2</sup>BRIA AI</span>
+            <span class="author-block" style="margin-left: 20px;"><sup>3</sup>Cornell University</span>
         </div>
     </section>
 
@@ -259,17 +259,17 @@
         <div class="abstract-container has-text-justified">
             <hr>
             <h2 align="center">Examples of Fine-grained 3D Shape Editing</h2><br></br>
-            <table class="interactive-table" width="80%" align="center">
+            <table class="interactive-table" width="80%" align="center" border="0px">
                 <tr>
-                    <td align="center" >
-                        <button class="prompt_title_black_small" onclick="playVideo('video3', '')" >Chair #1</button>
+                    <td align="center" width="33%">
+                        <button class="prompt_title_black_small" onclick="playVideo('video3', '')" width="33%" >Chair #1</button>
                     </td>
-                    <td align="center">
-						<a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</a>
-                        <button class="prompt_title_black_small" onclick="playVideo('video2', '')">Chair #2</button>
+                    <td align="center" width="33%">
+						
+                        <button class="prompt_title_black_small" onclick="playVideo('video2', '')" width="33%">Chair #2</button>
                     </td>
-                    <td align="center">
-                        <button class="prompt_title_black_small" onclick="playVideo('video1', '')">Chair #3</button>
+                    <td align="center" width="33%">
+                        <button class="prompt_title_black_small" onclick="playVideo('video1', '')" width="33%">Chair #3</button>
                     </td>
                 </tr>
                 <tr class="fixed-height-row" id="videoRow">
@@ -284,7 +284,7 @@
                         <button class="prompt_title_blue_small" onclick="switchVideo('_a')">Spindle backrest</button>
                     </td>
                     <td align="center">
-						<a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</a>
+						
                         <button class="prompt_title_blue_small" onclick="switchVideo('_b')">Thinner seat</button>
                     </td>
                     <td align="center">
@@ -313,7 +313,7 @@
                 🧪 We fine-tune a transformer-based diffusion model equipped with a cross-entity attention mechanism, following the approach of <a href="https://tau-vailab.github.io/Spice-E">Spice&middot;E</a>, on top of the pretrained <a href="https://github.com/openai/point-e">Point&middot;E</a> architecture.<br></br>
                 ✏️ Our model, <b>Inpaint-E</b>, is trained to take a partial point cloud with a masked region and a corresponding text prompt as input, and to generate a completed shape that reflects the requested edit.<br></br>
                 📉 The model is supervised using a denoising objective: it predicts the noise added to the ground truth shape, conditioned on the prompt and the masked input.<br></br>
-                🔁 To encourage identity preservation, we occasionally provide the full point cloud during training with a "COPY" prompt, enabling the model to learn faithful reconstruction in addition to editing.
+                🔁 To support our inference time algorithm, we occaisonaly replace the masked point cloud with a complete one and the editing instruction with a null prompt. This mechanism trains the model to reconstruct the guidance shape with high fidelity when required. 
             </p>            
             <br>
             <h5 align="center">Inference</h5>
@@ -324,8 +324,8 @@
                 <br>
                 🎯 During inference, we aim to generate an edited shape that matches the prompt while preserving the original structure.<br></br>
                 🧱 To achieve this, we introduce a <b>coordinate blending</b> technique that combines two types of denoising: inpainting and reconstruction.<br></br>
-                🧩 First, we run the model using the full input shape and the "COPY" prompt to reconstruct the original shape from noise—this helps preserve the unedited regions.<br></br>
-                ✏️ At a specific timestep \( t = t_r \), we switch to editing mode: the model receives the masked shape and the full prompt, generating a modified version of the target part.<br></br>
+                🧩 First, we run the model using the full input shape and a null text prompt to reconstruct the original shape from noise.<br></br>
+                ✏️ At a specific timestep \( t = t_r \), we switch to editing mode, initiating a seperate branch: the model receives the masked shape and the full prompt, generating a modified version of the target part.<br></br>
                 🌀 We then blend the outputs from the two paths—keeping the edited part from inpainting and the rest from reconstruction—ensuring smooth, high-quality edits without affecting the rest of the shape.<br></br>
                 ⚖️ This process avoids using inversion, which is often slow and inaccurate, and leads to better identity preservation across the unedited regions.
             </p>            
@@ -342,12 +342,12 @@
             <h2 align="center">BibTeX</h2>
             <div class="code-container" align="left">
                 <code>
-			 @inproceedings{sella2024spice, <br>
-   		&emsp;   &emsp;	title={Spice{\textperiodcentered} E: Structural Priors in 3D Diffusion using Cross-Entity Attention}, <br>
-  		&emsp;   &emsp;	author={Sella, Etai and Fiebelman, Gal and Atia, Noam and Averbuch-Elor, Hadar}, <br>
-  		&emsp;   &emsp;	booktitle={ACM SIGGRAPH 2024 Conference Papers}, <br>
-  		&emsp;   &emsp;	pages={1--11}, <br>
-  		&emsp;   &emsp; year={2024} <br>
+			 @inproceedings{<br>
+   		&emsp;   &emsp;	<br>
+  		&emsp;   &emsp; <br>
+  		&emsp;   &emsp;	<br>
+  		&emsp;   &emsp;	<br>
+  		&emsp;   &emsp; <br>
 		  }
                 </code>
             </div>
