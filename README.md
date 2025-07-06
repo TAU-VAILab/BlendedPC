@@ -85,13 +85,8 @@ Coming soon...
 If you find our work useful, please consider citing:
 
 ```bibtex
-@article{sella2023spic,
-  title={Spice-E : Structural Priors in 3D Diffusion using Cross-Entity Attention},
-  author={Etai Sella and Gal Fiebelman and Noam Atia and Hadar Averbuch-Elor},
-  year={2024},
-  eprint={2311.17834},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+@article{
+
 }
 ```
 
