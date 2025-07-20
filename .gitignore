@@ -5,4 +5,5 @@ point_e_model_cache/
 .DS_Store
 blending_cache/
 *.onnx*
+old_runs/
 outputs/
