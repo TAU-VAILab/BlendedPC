@@ -46,18 +46,10 @@ pip install -e .
 
 ## Running the Demo
 
-Run the one of the following commands to test the model:
+Run the following command to test the model:
 
 ```bash
-python run_inference.py --prompt "thinner legs" --shape_category chair --input_uid "chair/ShapeNet/4c97f421c4ea4396d8ac5d7ad0953104" --part leg
-```
-
-```bash
-python run_inference.py --prompt "thicker top" --shape_category table --input_uid "table/ShapeNet/a3ecb4d209807312492d9da2668ec34c" --part top
-```
-
-```bash
-python run_inference.py --prompt "rounded base" --shape_category lamp --input_uid "lamp/ShapeNet/aa6cdecffb9d4e403ec7ad443e0ae81e" --part base
+python run_inference.py 
 ```
 
 Model checkpoints are automatically downloaded from the Hugging Face Hub by default.
@@ -65,7 +57,7 @@ Model checkpoints are automatically downloaded from the Hugging Face Hub by defa
 **Expected Outputs:**
 
 - `input.png`: The original input shape
-- `copy.png`: Output of the model using the "copy" prompt
+- `reconstruction.png`: Output of the model using the "copy" prompt
 - `masked.png`: Input shape with masked regions
 - `output.png`: Final output after editing
 
@@ -93,13 +85,8 @@ Coming soon...
 If you find our work useful, please consider citing:
 
 ```bibtex
-@article{sella2023spic,
-  title={Spice-E : Structural Priors in 3D Diffusion using Cross-Entity Attention},
-  author={Etai Sella and Gal Fiebelman and Noam Atia and Hadar Averbuch-Elor},
-  year={2024},
-  eprint={2311.17834},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+@article{
+
 }
 ```
 

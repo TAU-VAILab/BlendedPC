@@ -160,6 +160,13 @@ li {
 	text-decoration: underline;
 }
 
+.conference {
+    font-size: 23px;
+	margin-bottom: -10px;
+	margin-top: -5px;
+	vertical-align: middle;
+}
+
 .video-label {
     font-family: "Noto Sans", Arial;
     font-size: 1.8vw;
@@ -217,7 +224,7 @@ li {
 }
 
 .affiliations {
-    margin-top: 10px;
+    margin-top: 5px;
 	margin-bottom: 4px;
 }
 
@@ -340,6 +347,12 @@ li {
     height: 100px;
     vertical-align: middle;
 	margin-bottom: 20px;
+}
+
+.conf-img {
+    width: 20px;
+    height: 20px;
+
 }
 
 button {
