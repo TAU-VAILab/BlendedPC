@@ -21,15 +21,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--prompt", type=str, default="backrest has vertical slats")
     parser.add_argument("--output_dir", type=str, default="outputs")
-    #parser.add_argument("--blending_cache_dir", type=str, default="blending_cache")
-    parser.add_argument("--shapetalk_dir", type=str, default="shapetalk")
     parser.add_argument("--transition_timestep", type=int, default=20, choices=list(range(NUM_INFERENCE_STEPS)))
     parser.add_argument("--shape_category", type=str, default="chair", choices=["chair", "table", "lamp"])
-    parser.add_argument("--input_uid", type=str, default="chair/ShapeNet/4b3ddc244c521f5c6a9ab6fc87e1604e")
+    parser.add_argument("--input_path", type=str, default="inputs/demo_chair.npz")
     parser.add_argument("--seed", type=int, default=0, help="Set seed for reproducibility.")
     parser.add_argument("--copy_prompt", type=str, default="COPY", help="Use COPY when using our pretrained models!")
     parser.add_argument("--part", type=str, default="back", choices=["leg", "arm", "seat", "back", "top", "support", "base", "shade", "bulb", "tube"])
-    parser.add_argument("--save_pcs", action="store_true", help="save final and intermediate point clouds to disk")
+    parser.add_argument("--save_pcs", type=bool, default=True, help="Save final and intermediate point clouds to disk")
+    parser.add_argument("--run_postprocess", type=bool, default=True, help="Postprocess improves identity preservation, but is not necessary and can cause artifacts")
     parser.add_argument("--keep_latents", type=bool, default=False)
     args = parser.parse_args()
 
@@ -60,34 +59,22 @@ def main():
     model = SPICE.load_from_checkpoint(dev=device, checkpoint_path=checkpoint_path)
     model.eval()
 
-    # save metadata json file to out folder
-    metadata = {
-        "prompt": args.prompt,
-        "output_dir": args.output_dir,
-        "shapetalk_dir": args.shapetalk_dir,
-        "transition_timestep": args.transition_timestep,
-        "shape_category": args.shape_category,
-        "input_uid": args.input_uid,
-        "copy_prompt": args.copy_prompt,
-        "part": args.part,
-        "seed": args.seed,
-    }
     with open(os.path.join(save_path, "metadata.json"), "w") as f:
-        json.dump(metadata, f, indent=2)
+        json.dump(vars(args), f, indent=2)
     
     # Input point cloud
     print(f"Loading input point cloud...")
-    input_pc = PointCloud.load_shapetalk(args.input_uid, args.shapetalk_dir).farthest_point_sample(NUM_POINTS_HIGH)
+    input_pc_high_res = PointCloud.load_shapetalk(args.input_path).farthest_point_sample(NUM_POINTS_HIGH)
     if args.save_pcs:
-        input_pc.save(os.path.join(save_path, 'input_pc.npz'))
+        input_pc_high_res.save(os.path.join(save_path, 'input_pc.npz'))
     print(f"Rendering input point cloud, saving to {os.path.join(save_path, 'input.png')}...")
-    Image.fromarray(render_point_cloud(input_pc)).save(os.path.join(save_path, 'input.png'))
+    Image.fromarray(render_point_cloud(input_pc_high_res)).save(os.path.join(save_path, 'input.png'))
 
     # Copy point cloud
     print(f"Copying point cloud...")
     blending_dir = os.path.join(save_path, 'reconstruction_latents')
     os.makedirs(blending_dir, exist_ok=True)
-    input_pc = input_pc.farthest_point_sample(1024)
+    input_pc = input_pc_high_res.farthest_point_sample(NUM_POINTS_LOW)
     input_latents = input_pc.encode().unsqueeze(0).to(device)
     samples = model.sampler.sample_batch(
                 batch_size=1,
@@ -127,6 +114,15 @@ def main():
                 transition_timestep=NUM_INFERENCE_STEPS - args.transition_timestep,
             )
     output_pc = model.sampler.output_to_point_clouds(samples)[0]
+
+    # Run postprocessing if specified
+    if args.run_postprocess:
+        output_pc.set_shape_category(args.shape_category)
+        masked_pc_high_res = output_pc.segment_pointcloud()
+        masked_indices = masked_pc_high_res.indices(args.part)
+        output_pc = output_pc.postprocess_blending(input_pc_high_res, masked_indices)
+    
+    
     if args.save_pcs:
         output_pc.save(os.path.join(save_path, 'output_pc.npz'))
     print(f"Rendering output point cloud, saving to {os.path.join(save_path, 'output.png')}...")

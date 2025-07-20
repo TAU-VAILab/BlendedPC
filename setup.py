@@ -26,6 +26,7 @@ setup(
         "ailia",
         "mitsuba",
         "pytorch-lightning",
+        "opencv-python",
     ],
     author="OpenAI",
 )

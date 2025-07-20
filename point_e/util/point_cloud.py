@@ -53,12 +53,14 @@ class PointCloud:
             )
         
     @classmethod
-    def load_shapetalk(cls, shapetalk_uid: str, shapetalk_dir: str) -> "PointCloud":
+    def load_shapetalk(cls, pc_path: str) -> "PointCloud":
         """
         Load the shapetalk point cloud from a .npz file.
         """
-        path = f"{shapetalk_dir}/{shapetalk_uid}.npz"
-        with open(path, "rb") as fn:
+        # if path does not end with nps, raise an error
+        if not pc_path.endswith(".npz"):
+            raise ValueError(f"Invalid path: {pc_path}. Expected a .npz file.")
+        with open(pc_path, "rb") as fn:
             coords = np.load(fn)["pointcloud"].astype(np.float32)
         coords[:, [0, 1, 2]] = coords[:, [2, 0, 1]]
         coords[:, 0] = -1.0 * coords[:, 0]
@@ -290,6 +292,17 @@ class PointCloud:
         # label original point cloud
         return self.add_labels(reduced_pc)
 
+    def postprocess_blending(self, other: "PointCloud", indices: np.ndarray,) -> "PointCloud":
+        """
+        Get the nearest points from another point cloud based on the indices.
+        """
+        tree = KDTree(other.coords)
+        _, nearest_indices = tree.query(self.coords[indices])
+        coords = self.coords
+        coords[indices] = other.coords[nearest_indices]
+        channels = self.channels
+        labels = self.labels
+        return PointCloud(coords=coords, channels=channels, labels=labels, shape_category=other.shape_category)
 
     def add_labels(self, other: "PointCloud") -> "PointCloud":
         tree = KDTree(other.coords)
