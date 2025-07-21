@@ -6,7 +6,7 @@
 
 This is the official PyTorch implementation of **BlendedPC**.
 
-[![arXiv](https://img.shields.io/badge/arXiv-2311.17834-b31b1b.svg)](https://arxiv.org/abs/2311.17834)  
+[![arXiv](https://img.shields.io/badge/arXiv--b31b1b.svg)](https://arxiv.org/abs/)  
 [[Project Website](https://tau-vailab.github.io/BlendedPC/)]
 
 ## Abstract
@@ -17,24 +17,22 @@ We introduce an **inpainting-based framework** for editing shapes represented as
 
 Extensive experiments demonstrate that our method outperforms existing techniques across multiple metrics, measuring both fidelity to the original shape and adherence to textual prompts.
 
-We will release our code and trained models.
-
 <p align="center">
-<img src="docs/webpage_assets/images/teaser.png">
+<img src="webpage_assets/images/teaser.png">
 </p>
 
 ---
 
 ## Getting Started
 
-### Clone the Repository
+### Cloning the repository
 
 ```bash
 git clone git@github.com:TAU-VAILab/BlendedPC.git
 cd BlendedPC
 ```
 
-### Set Up the Environment
+### Setting up the environment
 
 ```bash
 conda create --name blended-pc -y python=3.11
@@ -46,10 +44,16 @@ pip install -e .
 
 ## Running the Demo
 
-Run the following command to test the model:
+Run one of the following scripts to test our "chair", "lamp" or "table" models:
 
 ```bash
-python run_inference.py 
+bash demos/chair_demo.sh 
+```
+```bash
+bash demos/lamp_demo.sh 
+```
+```bash
+bash demos/table_demo.sh 
 ```
 
 Model checkpoints are automatically downloaded from the Hugging Face Hub by default.
@@ -63,14 +67,16 @@ Model checkpoints are automatically downloaded from the Hugging Face Hub by defa
 
 ---
 
-## Using Other Shapes from ShapeTalk
+## Using other shapes from ShapeTalk
 
 Download the ShapeTalk dataset from [here](https://changeit3d.github.io/#dataset).  
 Then run the script with your desired parameters:
 
 ```bash
-python run_inference.py --prompt <YOUR-PROMPT> --shape_category <SHAPE-CATEGORY> --input_uid <INPUT-UID> --part <SHAPE-PART> --shapetalk_dir <SHAPETALK-DIR>
+python run_inference.py --prompt <YOUR-PROMPT> --shape_category <SHAPE-CATEGORY> --input_path <INPUT-PATH> --part <SHAPE-PART>
 ```
+
+Please refer to the previously mentioned demo scripts for examples on how to set these arguments.
 
 ---
 
