@@ -6,8 +6,8 @@
 
 This is the official PyTorch implementation of **BlendedPC**.
 
-[![arXiv](https://img.shields.io/badge/arXiv--b31b1b.svg)](https://arxiv.org/abs/)  
-[[Project Website](https://tau-vailab.github.io/BlendedPC/)]
+[![arXiv](https://img.shields.io/badge/arXiv-2507.15399-b31b1b.svg)](https://arxiv.org/abs/2507.15399)
+![Generic badge](https://img.shields.io/badge/conf-ICCV2025-purple.svg)
 
 ## Abstract
 
@@ -91,8 +91,14 @@ Coming soon...
 If you find our work useful, please consider citing:
 
 ```bibtex
-@article{
-
+@misc{sella2025blendedpointclouddiffusion,
+      title={Blended Point Cloud Diffusion for Localized Text-guided Shape Editing}, 
+      author={Etai Sella and Noam Atia and Ron Mokady and Hadar Averbuch-Elor},
+      year={2025},
+      eprint={2507.15399},
+      archivePrefix={arXiv},
+      primaryClass={cs.GR},
+      url={https://arxiv.org/abs/2507.15399}, 
 }
 ```
 
