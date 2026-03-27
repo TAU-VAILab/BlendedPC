@@ -104,7 +104,8 @@ class PointCloudSampler:
                      blending_indices_list: Optional[List[int]] = None, 
                      transition_timestep: Optional[int] = None,
                      return_list: bool = False) -> torch.Tensor:
-        os.makedirs(blending_cache_dir, exist_ok=True)
+        if blending_cache_dir is not None:
+            os.makedirs(blending_cache_dir, exist_ok=True)
         samples = None
         samples_list = []
         for x in self.sample_batch_progressive(batch_size, model_kwargs, guidances, prev_samples, blending_cache_dir, blending_indices_list, transition_timestep):

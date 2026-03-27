@@ -145,13 +145,32 @@ def check_and_download_models(weight_path, model_path, remote_path):
         )
 
 
+import gc as _gc
+
+_NET_SEG_CACHE = {}
+_NET_SEG_CALLS = {}
+_MAX_REUSES = 200
+
 def init_net_seg(shape_category: str):
     """
-    Initialize the net_seg for a given shape category.
+    Initialize (or return cached) net_seg for a given shape category.
+    Periodically recreates the runtime to avoid C++ memory leaks in ailia.
     """
+    count = _NET_SEG_CALLS.get(shape_category, 0)
+    if shape_category in _NET_SEG_CACHE and count < _MAX_REUSES:
+        _NET_SEG_CALLS[shape_category] = count + 1
+        return _NET_SEG_CACHE[shape_category]
+
+    if shape_category in _NET_SEG_CACHE:
+        del _NET_SEG_CACHE[shape_category]
+        _gc.collect()
+
     assert shape_category in CATEGORIES, f"Invalid shape category: {shape_category}"
     weight_path = f'{shape_category}_100.onnx'
     model_path = f'{shape_category}_100.onnx.prototxt'
     check_and_download_models(
         weight_path, model_path, 'https://storage.googleapis.com/ailia-models/pointnet_pytorch/')
-    return ailia.Net(model_path, weight_path)
+    net = ailia.Net(model_path, weight_path)
+    _NET_SEG_CACHE[shape_category] = net
+    _NET_SEG_CALLS[shape_category] = 0
+    return net

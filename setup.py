@@ -27,6 +27,7 @@ setup(
         "mitsuba",
         "pytorch-lightning",
         "opencv-python",
+        "pandas",
     ],
     author="OpenAI",
 )
